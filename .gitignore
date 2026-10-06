@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+
+# Local runtime state and logs
+*.log
+state/
+data/
+__pycache__/
+.DS_Store
