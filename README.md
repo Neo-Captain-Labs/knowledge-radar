@@ -1,57 +1,71 @@
 # Knowledge Radar
 
-Build a personal knowledge radar that collects information from RSS and newsletters, lets AI triage it against your own priorities, and sends a concise briefing to the channel you actually check.
+[English](README.en.md) | [完整建置規格](SPEC.md) | [AI Agent 任務書](AGENT_TASK.md)
 
-This repository is a reusable specification, not a hosted product and not a copy of anyone's private workflow. You define the sources, priorities, notification channel, model provider, and level of automation.
+你不需要再把每天滑到的每一則資訊都看完。
 
-Chinese guide: [拒絕數位成癮：打造第二大腦知識雷達](https://neohime.com/ai-agent-knowledge-radar/)
+Knowledge Radar 是一套可自行定義的工作流：把 RSS、電子報或其他閱讀來源集中起來，交由 AI 依你的規格做第一輪篩選，再送出一份短而可讀的日報。它不是替你決定什麼重要，而是替你減少「先從一堆東西裡挑出值得看的內容」這件事。
 
-## What this system does
+中文介紹文章：[拒絕數位成癮：打造第二大腦知識雷達](https://neohime.com/ai-agent-knowledge-radar/)
+
+## 這套系統在做什麼
 
 ```text
-RSS / newsletters / topic feeds
-            ↓
-       Reading inbox
-            ↓
-    AI relevance triage
-            ↓
-      Short daily briefing
-            ↓
- Discord / LINE / Slack / email
-            ↓
-  You decide what to read or act on
+RSS／電子報／主題訂閱
+          ↓
+      閱讀收件匣
+          ↓
+  依個人規格的 AI 初篩
+          ↓
+     去重、分類、短摘要
+          ↓
+Discord／LINE／Slack／Email
+          ↓
+  由你決定要讀、要做或略過
 ```
 
-The objective is not to summarize everything. It is to reduce a large incoming stream into a short list worth your attention.
+系統的目標不是摘要所有內容。它要做的是把大量輸入，整理成少量值得你分配注意力的線索。
 
-## Choose an automation level
+## 先理解這個分工
 
-| Level | What happens | Best for |
+| 工作 | 誰負責 | 原因 |
 | --- | --- | --- |
-| Manual | You ask an AI assistant to triage unread items. | Testing your rules with no deployment. |
-| Scheduled | A local computer runs the triage on a schedule. | A proven workflow that still depends on your computer. |
-| Cloud | A scheduled cloud job runs independently. | A stable workflow you use regularly. |
+| 收集、保留原文、跨裝置閱讀 | 閱讀器或 RSS 工具 | 成熟工具已經把這件事做好。 |
+| 依規格挑選、去重、排列 | AI Agent | 能穩定地做第一輪初篩。 |
+| 決定是否相信、閱讀、行動或分享 | 你 | 這是判斷，不該外包。 |
 
-Start manually. Automate only after you have enough examples of what the radar should keep and discard.
+閱讀器負責保留材料，AI 負責依規格初篩，人才決定材料最後要變成什麼。
 
-## Repository guide
+## 三條建置路徑
 
-| File | Purpose |
+| 路徑 | 適合誰 | 你會得到什麼 |
+| --- | --- | --- |
+| 人工版 | 還不知道自己真正想看什麼的人 | 每天把未讀項目交給 AI，先校準規格。 |
+| 本機排程 | 有常開電腦、想先降低部署門檻的人 | 固定時間自動產出短報。 |
+| 雲端排程 | 希望電腦關機仍能收到短報的人 | 可長期運作的自動化服務。 |
+
+建議從人工版開始。真正困難的通常不是部署，而是你還沒定義清楚「什麼值得留下」。
+
+## 文件導覽
+
+| 文件 | 用途 |
 | --- | --- |
-| [SPEC.md](SPEC.md) | System specification, setup sequence, security boundaries, and acceptance criteria. |
-| [AGENT_TASK.md](AGENT_TASK.md) | A task brief you can paste into an AI coding agent. |
-| [.env.example](.env.example) | Safe environment-variable names only. |
-| [SECURITY.md](SECURITY.md) | Credential, publishing, and privacy rules. |
+| [SPEC.md](SPEC.md) | 中文完整建置規格、驗收條件與安全邊界。 |
+| [SPEC.en.md](SPEC.en.md) | English implementation specification. |
+| [AGENT_TASK.md](AGENT_TASK.md) | 可直接貼給中文 AI Agent 的任務書。 |
+| [AGENT_TASK.en.md](AGENT_TASK.en.md) | English task brief for an AI coding agent. |
+| [.env.example](.env.example) | 只包含安全的環境變數名稱。 |
+| [SECURITY.md](SECURITY.md) | 憑證、隱私與公開分享規則。 |
 
-## Principles
+## 使用原則
 
-1. A reading inbox preserves material. An AI agent triages it. These are different jobs.
-2. Let the machine apply an explicit first-pass rule. Keep final judgment and action with a person.
-3. Group duplicate coverage of one event. Do not make the reader scan the same news repeatedly.
-4. Keep notification messages short and link back to the original reading environment.
-5. Treat feedback as a signal about topics and criteria, not an automatic reason to delete a source.
-6. Store credentials outside the repository. Commit an example file, never the real file.
+1. 不要複製別人的來源清單。複製判斷方法，再換成自己的來源與規格。
+2. 一開始只要選出少量內容。日報太長，等於沒有篩選。
+3. 同一事件出現多次時，保留資訊最完整的一則即可。
+4. 連結應回到原文或自己的閱讀器，不要讓通知頻道變成新的資訊黑洞。
+5. 每次誤選或漏掉一則內容，都是補規格的線索。
+6. 不要把 Token、Webhook、Cookie 或私人來源清單放進 Git。
 
-## License
+## 授權
 
-The documentation is released under [CC BY 4.0](LICENSE). You may adapt it with attribution.
+文件採用 [CC BY 4.0](LICENSE) 授權。你可以改作與分享，但請保留來源標示。
