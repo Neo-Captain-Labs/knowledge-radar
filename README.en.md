@@ -6,7 +6,7 @@ Knowledge Radar is a personal workflow for collecting incoming reading, applying
 
 It does not decide what matters for you. It reduces the work of sorting through everything before you can decide.
 
-Chinese introduction: [Build a personal AI knowledge radar](https://neohime.com/ai-agent-knowledge-radar/)
+Chinese introduction: [Build a personal AI knowledge radar](https://neonlair.com/ai-agent-knowledge-radar/)
 
 ## Flow
 

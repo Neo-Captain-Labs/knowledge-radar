@@ -6,7 +6,7 @@
 
 Knowledge Radar 是一套可自行定義的工作流：把 RSS、電子報或其他閱讀來源集中起來，交由 AI 依你的規格做第一輪篩選，再送出一份短而可讀的日報。它不是替你決定什麼重要，而是替你減少「先從一堆東西裡挑出值得看的內容」這件事。
 
-中文介紹文章：[拒絕數位成癮：打造第二大腦知識雷達](https://neohime.com/ai-agent-knowledge-radar/)
+中文介紹文章：[拒絕數位成癮：打造第二大腦知識雷達](https://neonlair.com/ai-agent-knowledge-radar/)
 
 ## 這套系統在做什麼
 
