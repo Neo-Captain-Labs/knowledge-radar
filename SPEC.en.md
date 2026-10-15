@@ -28,9 +28,11 @@ The system should retain an original link, a concise explanation, and a reason f
 - Use an explicit relevance rubric, not broad topic names alone.
 - Remove clear noise before model inference when possible.
 - Group duplicate coverage of the same event and retain the strongest source.
-- Produce Traditional Chinese title, short summary, relevance note, and link.
+- Produce a Traditional Chinese title (linked) and one relevance sentence per item: two lines, mobile-first, no pasted foreign-language summaries and no preview URLs.
+- Translate foreign-language titles in a separate step and verify that each title contains Chinese characters; models often copy the original title unchanged.
 - Keep a fixed category order and output each category once.
-- Limit the daily briefing to a useful number of items.
+- Limit the daily briefing to roughly 5 to 8 items, small enough to scan on a phone.
+- Omit intro and footer text; keep only the date heading and content (the fallback notice is the one exception).
 - Deliver to the user's chosen channel, then link back to the original material.
 
 ## State and reliability
@@ -53,7 +55,8 @@ If the model fails, use a simpler rule-based fallback and label the result clear
 - Duplicate runs do not resend the same items.
 - Long messages are split at complete item boundaries.
 - Cloud scheduling works without the local computer running, if cloud mode is chosen.
-- A fallback path is visible when semantic triage is unavailable.
+- A fallback path is visible when semantic triage is unavailable, and the exception is also logged.
+- The real message has been checked on a phone: two lines per item, no untranslated foreign sentences.
 - Real usage has informed at least one revision of the triage rules.
 
 For the full Chinese implementation guide, see [SPEC.md](SPEC.md).

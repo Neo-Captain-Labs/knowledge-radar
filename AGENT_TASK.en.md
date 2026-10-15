@@ -22,8 +22,11 @@ My categories and rules
    Prioritize:
 
 Output requirements
-- Select only [8 to 15] items per day.
-- Each item needs a Traditional Chinese title, source, what happened, why it matters, and an original or reader link.
+- Select at most [5 to 8] items per day, readable at a glance on a phone.
+- Each item is two lines: a Traditional Chinese title (linked) with the source, then one sentence on why it matters.
+- Titles and notes are Traditional Chinese; only proper nouns keep the original. Do not paste the source's own foreign-language summary or preview URLs.
+- No intro or footer text, only the date heading and content (except the fallback notice).
+- Run a separate translation step for foreign-language titles and verify it by checking that each title contains Chinese characters.
 - Use a fixed category order. Render each category heading only once.
 - Group duplicate coverage of the same event and retain the strongest source.
 - Split overlong notifications at complete item boundaries.
